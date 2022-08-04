@@ -35,7 +35,7 @@ def get_graph(entered_year):
     df =  airline_data[airline_data['Year']==int(entered_year)]
     
     # Group the data by Month and compute average over arrival delay time.
-    line_data = df.groupby(['Month', 'Reporting_Airline'])['ArrDelay'].mean().reset_index()
+    line_data = df.groupby(['Month'])['ArrDelay'].mean().reset_index()
 
     fig = go.Figure(data=go.Scatter(x=line_data['Month'], y=line_data['ArrDelay'], mode='lines', marker=dict(color='green')))
     fig.update_layout(title='Month vs Average Flight Delay Time', xaxis_title='Month', yaxis_title='ArrDelay')
